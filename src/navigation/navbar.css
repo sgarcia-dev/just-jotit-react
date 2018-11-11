@@ -1,0 +1,36 @@
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 70px;
+  padding: 2rem;
+  background-color: white;
+  border-bottom: 1px solid gray;
+}
+
+.navbar .brand {
+  float: left;
+  height: 100%;
+  display: flex;
+  align-items: center;
+}
+
+.navbar .brand h1 {
+  margin: 0;
+  padding: 0;
+}
+
+.navbar .links {
+  float: right;
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  display: flex;
+  align-items: center;
+}
+
+.navbar ul li {
+  display: inline-block;
+  padding-left: 2rem;
+}
