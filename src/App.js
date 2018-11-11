@@ -1,9 +1,9 @@
 import React, { Component } from "react";
 import { BrowserRouter as Router, Route } from "react-router-dom";
 
-import { NavbarView as Navbar } from "./navigation/NavbarView";
+import Navbar from "./navigation/NavbarView";
 import LandingView from "./home/LandingView";
-import { LoginView } from "./authentication/LoginView";
+import LoginView from "./authentication/LoginView";
 import { SignupView } from "./authentication/SignupView";
 import { CreateNoteView } from "./notes/create/CreateNoteView";
 

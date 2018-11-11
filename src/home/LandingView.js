@@ -18,8 +18,7 @@ export const LandingView = props => {
 
   const authenticatedView = (
     <div id="auth-menu">
-      <h3 id="nav-greeting">Welcome User</h3>
-      <button id="logout-btn">Logout</button>
+      <h3 id="nav-greeting">Welcome {props.username}</h3>
       <NoteListView />
     </div>
   );
@@ -28,7 +27,8 @@ export const LandingView = props => {
 };
 
 const mapStateToProps = state => ({
-  isLoggedIn: state.auth.isLoggedIn
+  isLoggedIn: state.auth.isLoggedIn,
+  username: state.auth.username
 });
 
 export default connect(mapStateToProps)(LandingView);
