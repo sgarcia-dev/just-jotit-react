@@ -1,12 +1,13 @@
 import React from "react";
 import { connect } from "react-redux";
 
+import LoginForm from "./LoginForm";
+
 export class LoginView extends React.Component {
-  login(event) {
-    event.preventDefault();
+  login(values) {
     this.props.dispatch({
       type: "LOGIN_SUCCESS",
-      username: "sgarcia-dev",
+      username: values.username,
       jwt: "ajsndiajsndjansdkjanskjdanskjdaksdn"
     });
     alert("Login Succesful.");
@@ -17,17 +18,7 @@ export class LoginView extends React.Component {
     return (
       <React.Fragment>
         <h1>Login</h1>
-        <form id="login-form" onSubmit={this.login.bind(this)}>
-          <label>
-            Username: <input id="username-txt" type="text" required />
-            <br />
-          </label>
-          <label>
-            Password: <input id="password-txt" type="password" required />
-            <br />
-          </label>
-          <input type="submit" value="Login" />
-        </form>
+        <LoginForm onSubmit={this.login.bind(this)} />
       </React.Fragment>
     );
   }

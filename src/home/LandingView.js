@@ -18,7 +18,7 @@ export const LandingView = props => {
 
   const authenticatedView = (
     <div id="auth-menu">
-      <h3 id="nav-greeting">Welcome {props.username}</h3>
+      <h1 id="nav-greeting">Welcome {props.username}</h1>
       <NoteListView />
     </div>
   );
