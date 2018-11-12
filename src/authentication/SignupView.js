@@ -1,6 +1,8 @@
 import React from "react";
 import SignupForm from "./SignupForm";
 
+import "./auth-views.css";
+
 export class SignupView extends React.Component {
   signup(formValues) {
     alert(`User ${formValues.username} created. Redirecting you to login ...`);
@@ -16,3 +18,5 @@ export class SignupView extends React.Component {
     );
   }
 }
+
+export default SignupView;

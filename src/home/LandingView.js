@@ -1,5 +1,4 @@
 import React from "react";
-import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 
 import NoteListView from "./NoteListView";
@@ -7,12 +6,12 @@ import NoteListView from "./NoteListView";
 export const LandingView = props => {
   const defaultView = (
     <div id="default-menu">
-      <h3>Welcome to JJ. Your own notebook, on the cloud.</h3>
-      <h4>
-        To create and view your notes, please <Link to="/login">Log In</Link>
-        <span> or </span>
-        <Link to="/signup">Create an Account</Link>
-      </h4>
+      <h1>Welcome to JJ. Your own notebook, on the cloud.</h1>
+      <p>
+        Just Jotit is a place where you can write down your ideas in a simple,
+        minimal interface, and access them using your account information.
+      </p>
+      <h5>To create and view your notes, please Login or Create an Account.</h5>
     </div>
   );
 

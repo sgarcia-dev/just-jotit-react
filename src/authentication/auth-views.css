@@ -1,0 +1,7 @@
+#login-form label,
+#sign-up-form label {
+  display: block;
+  margin: 0.5em 0;
+  font-size: 1.3em;
+  font-weight: 100;
+}

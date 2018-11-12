@@ -1,0 +1,15 @@
+#note-list {
+  margin: 3rem 0;
+}
+
+#note-card .card-header {
+  margin-bottom: 0.5rem;
+}
+
+#note-card .card-content {
+  margin: 0.5rem 0;
+}
+
+#note-card .card-info {
+  margin: 0.5rem 0;
+}
