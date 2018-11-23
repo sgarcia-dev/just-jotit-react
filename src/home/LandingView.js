@@ -1,7 +1,7 @@
 import React from "react";
 import { connect } from "react-redux";
 
-import NoteListView from "./NoteListView";
+import NoteListView from "../notes/list/NoteListView";
 
 export const LandingView = props => {
   const defaultView = (

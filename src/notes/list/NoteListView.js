@@ -2,12 +2,25 @@ import React from "react";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 
+import { getNotes, deleteNote } from "../note-actions";
 import "./note-list.css";
 
 export class NoteListView extends React.Component {
-  deleteNote(note) {
-    alert(`Deleting Note ...`);
-    console.log(note);
+  componentDidMount() {
+    this.props.getNotes({
+      jwt: this.props.jwt
+    });
+  }
+
+  deleteNote(noteId) {
+    this.props
+      .deleteNote({
+        jwt: this.props.jwt,
+        noteId
+      })
+      .then(() => {
+        alert("Note deleted!");
+      });
   }
 
   renderNote(note) {
@@ -28,20 +41,31 @@ export class NoteListView extends React.Component {
             <button id="edit-note-btn">Edit</button>
           </Link>
           &nbsp;
-          <button id="delete-note-btn">Delete</button>
+          <button id="delete-note-btn" onClick={() => this.deleteNote(note.id)}>
+            Delete
+          </button>
         </div>
       </div>
     );
   }
 
   render() {
-    const notes = this.props.noteList.map(this.renderNote);
+    const notes = this.props.noteList.map(this.renderNote.bind(this));
     return <main id="note-list">{notes}</main>;
   }
 }
 
 const mapStateToProps = state => ({
-  noteList: state.note.noteList
+  noteList: state.note.noteList,
+  jwt: state.auth.jwt
 });
 
-export default connect(mapStateToProps)(NoteListView);
+const mapDispatchToProps = {
+  getNotes,
+  deleteNote
+};
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(NoteListView);

@@ -1,45 +1,41 @@
-const initialState = {
-  noteList: [
-    {
-      id: 123,
-      title: "How to learn ReactJS",
-      content: "Step 1 - Learn JavaScript. Step 2 - Learn React.",
-      updateDate: new Date().toISOString(),
-      user: {
-        name: "Sergei Garcia"
-      }
-    },
-    {
-      id: 456,
-      title: "How to learn CSS",
-      content: "Step 1 - Learn CSS.",
-      updateDate: new Date().toISOString(),
-      user: {
-        name: "Sergei Garcia"
-      }
-    },
-    {
-      id: 789,
-      title: "How to Graduate",
-      content:
-        "Step 1 - Learn to code. Step 2 - Build Capstones. Step 3 - Graduate.",
-      updateDate: new Date().toISOString(),
-      user: {
-        name: "Sergei Garcia"
-      }
-    }
-  ],
-  noteDetails: {
-    id: 123,
-    title: "Note Placeholder Title",
-    content: "Note Placeholder Content",
-    updateDate: new Date().toISOString(),
-    user: {
-      name: "Sergei Garcia"
-    }
-  }
-};
+import * as actions from "../notes/note-actions";
 
+const initialState = {
+  loading: false,
+  error: null,
+  noteList: [],
+  noteDetails: null
+};
 export default function reducer(state = initialState, action) {
+  // REQUEST START
+  if (
+    action.type === actions.GET_NOTES_REQUEST ||
+    action.type === actions.GET_NOTE_REQUEST ||
+    action.type === actions.CREATE_NOTE_REQUEST ||
+    action.type === actions.UPDATE_NOTE_REQUEST ||
+    action.type === actions.DELETE_NOTE_REQUEST
+  ) {
+    return { ...state, loading: true, error: null };
+    // REQUEST ERROR
+  } else if (
+    action.type === actions.GET_NOTES_FAILURE ||
+    action.type === actions.GET_NOTE_FAILURE ||
+    action.type === actions.CREATE_NOTE_FAILURE ||
+    action.type === actions.UPDATE_NOTE_FAILURE ||
+    action.type === actions.DELETE_NOTE_FAILURE
+  ) {
+    return { ...state, loading: false, error: action.error };
+    // REQUEST SUCCESS
+  } else if (action.type === actions.GET_NOTES_SUCCESS) {
+    return { ...state, loading: false, noteList: action.notes };
+  } else if (action.type === actions.GET_NOTE_SUCCESS) {
+    return { ...state, loading: false, noteDetails: action.note };
+  } else if (action.type === actions.CREATE_NOTE_SUCCESS) {
+    return { ...state, loading: false, noteDetails: action.note };
+  } else if (action.type === actions.UPDATE_NOTE_SUCCESS) {
+    return { ...state, loading: false, noteDetails: action.note };
+  } else if (action.type === actions.DELETE_NOTE_SUCCESS) {
+    return { ...state, loading: false };
+  }
   return state;
 }

@@ -2,12 +2,26 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 
 import EditNoteForm from "./EditNoteForm";
+import { getNote, updateNote } from "../note-actions";
 
 export class EditNoteView extends Component {
+  componentDidMount() {
+    this.props.getNote({
+      jwt: this.props.jwt,
+      noteId: this.props.match.params.noteId
+    });
+  }
+
   saveChanges(formValues) {
-    alert("Changes saved.");
-    console.log(formValues);
-    this.props.history.push("/");
+    this.props
+      .updateNote({
+        jwt: this.props.jwt,
+        noteId: this.props.match.params.noteId,
+        note: formValues
+      })
+      .then(updatedNote => {
+        this.props.history.push(`/details/${updatedNote.id}`);
+      });
   }
 
   render() {
@@ -21,7 +35,16 @@ export class EditNoteView extends Component {
 }
 
 const mapStateToProps = state => ({
+  jwt: state.auth.jwt,
   note: state.note.noteDetails
 });
 
-export default connect(mapStateToProps)(EditNoteView);
+const mapDispatchToProps = {
+  getNote,
+  updateNote
+};
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(EditNoteView);
