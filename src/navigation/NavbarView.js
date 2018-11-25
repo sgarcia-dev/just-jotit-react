@@ -1,15 +1,16 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, withRouter } from "react-router-dom";
 import { connect } from "react-redux";
+
+import { logout } from "../authentication/auth-actions";
 
 import "./navbar.css";
 
 export class NavbarView extends React.Component {
   logout() {
-    this.props.dispatch({
-      type: "LOGOUT_SUCCESS"
-    });
-    alert("Logout Succesful.");
+    this.props.logout();
+    alert("Logout succesful.");
+    this.props.history.push("/");
   }
 
   render() {
@@ -55,4 +56,11 @@ const mapStateToProps = state => ({
   isLoggedIn: state.auth.isLoggedIn
 });
 
-export default connect(mapStateToProps)(NavbarView);
+const mapDispatchToProps = {
+  logout
+};
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(withRouter(NavbarView));

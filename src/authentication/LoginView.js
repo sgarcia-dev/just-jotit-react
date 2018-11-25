@@ -2,17 +2,17 @@ import React from "react";
 import { connect } from "react-redux";
 
 import LoginForm from "./LoginForm";
+import { logIn } from "./auth-actions";
+import { saveAuthData } from "./localStorage";
+
 import "./auth-views.css";
 
 export class LoginView extends React.Component {
   login(values) {
-    this.props.dispatch({
-      type: "LOGIN_SUCCESS",
-      username: values.username,
-      jwt: "ajsndiajsndjansdkjanskjdanskjdaksdn"
+    this.props.logIn(values).then(loginData => {
+      alert(`User ${loginData.user.name} logged in succesfully.`);
+      this.props.history.push("/");
     });
-    alert("Login Succesful.");
-    this.props.history.push("/");
   }
 
   render() {
@@ -25,4 +25,13 @@ export class LoginView extends React.Component {
   }
 }
 
-export default connect()(LoginView);
+const mapStateToProps = state => ({});
+
+const mapDispatchToProps = {
+  logIn
+};
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(LoginView);

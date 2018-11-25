@@ -101,7 +101,6 @@ export const createNote = payload => dispatch => {
     })
     .then(note => {
       dispatch(createNoteSuccessAction());
-      dispatch(getNotes());
       return note;
     })
     .catch(err => {

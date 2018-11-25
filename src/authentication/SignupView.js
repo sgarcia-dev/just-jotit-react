@@ -1,12 +1,18 @@
 import React from "react";
+import { connect } from "react-redux";
 import SignupForm from "./SignupForm";
 
 import "./auth-views.css";
+import { signUp } from "./auth-actions";
 
 export class SignupView extends React.Component {
   signup(formValues) {
-    alert(`User ${formValues.username} created. Redirecting you to login ...`);
-    this.props.history.push("/login");
+    this.props.signUp(formValues).then(createdUser => {
+      alert(
+        `User ${createdUser.username} created. Redirecting you to login ...`
+      );
+      this.props.history.push("/login");
+    });
   }
 
   render() {
@@ -19,4 +25,13 @@ export class SignupView extends React.Component {
   }
 }
 
-export default SignupView;
+const mapStateToProps = state => ({});
+
+const mapDispatchToProps = {
+  signUp
+};
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(SignupView);
