@@ -20,6 +20,9 @@ export class NoteListView extends React.Component {
       })
       .then(() => {
         alert("Note deleted!");
+        this.props.getNotes({
+          jwt: this.props.jwt
+        });
       });
   }
 

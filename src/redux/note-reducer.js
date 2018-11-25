@@ -9,13 +9,26 @@ const initialState = {
 export default function reducer(state = initialState, action) {
   // REQUEST START
   if (
-    action.type === actions.GET_NOTES_REQUEST ||
-    action.type === actions.GET_NOTE_REQUEST ||
     action.type === actions.CREATE_NOTE_REQUEST ||
     action.type === actions.UPDATE_NOTE_REQUEST ||
     action.type === actions.DELETE_NOTE_REQUEST
   ) {
-    return { ...state, loading: true, error: null };
+    return {
+      ...state,
+      loading: true,
+      error: null
+    };
+  } else if (
+    action.type === actions.GET_NOTES_REQUEST ||
+    action.type === actions.GET_NOTE_REQUEST
+  ) {
+    return {
+      ...state,
+      loading: true,
+      error: null,
+      noteDetails: null,
+      noteList: []
+    };
     // REQUEST ERROR
   } else if (
     action.type === actions.GET_NOTES_FAILURE ||

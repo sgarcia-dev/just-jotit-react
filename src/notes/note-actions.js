@@ -85,7 +85,7 @@ const createNoteFailureAction = error => ({
 });
 export const createNote = payload => dispatch => {
   const { note, jwt } = payload;
-  dispatch(createNoteAction({ note }));
+  dispatch(createNoteAction({ note, jwt }));
   return fetch(`${API}/posts/`, {
     method: "POST",
     body: JSON.stringify(note),

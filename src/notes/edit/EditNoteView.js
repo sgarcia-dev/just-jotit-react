@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 
+import AuthProtectedComponent from "../../authentication/auth-protected-component";
 import EditNoteForm from "./EditNoteForm";
 import { getNote, updateNote } from "../note-actions";
 
@@ -44,7 +45,9 @@ const mapDispatchToProps = {
   updateNote
 };
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(EditNoteView);
+export default AuthProtectedComponent(
+  connect(
+    mapStateToProps,
+    mapDispatchToProps
+  )(EditNoteView)
+);
