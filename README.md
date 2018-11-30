@@ -1,6 +1,6 @@
 # Just Jotit
 
-An sample React/Redux application built to serve as an example of how a fully functioning app would work. Since there is no back-end yet, you it uses a fake API to simulate calls, but it has a fully functional async actions, and even JWT authentication. You can find a live version of it [here](https://just-jotit-react.heroku.com).
+An sample React/Redux note keeping application built to serve as an example of how a fully functioning app would work. Based on my original FullStack app built with Node/Express/Mongo/jQuery, [Just-Jotit](https://github.com/sgarcia-dev/just-jotit). Since there is no back-end yet, you it uses a fake API to simulate calls, but it has a fully functional async actions, and even JWT authentication. You can find a live version of it [here](https://just-jotit-react.heroku.com).
 
 ## How to download and run
 
